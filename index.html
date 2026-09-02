@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Optimus O1 — Flatbed Truck Camper | Optimus Outdoors</title>
-<meta name="description" content="A composite-shell flatbed truck camper built for washboard roads and long winters. 1,300 lb dry, off-grid for a week, fits in a standard garage.">
+<!-- Title and description are set from content.js — edit them there. -->
+<title>Optimus Outdoors</title>
+<meta name="description" content="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,6 +24,17 @@
   .btn-ghost { border: 1px solid rgba(247,244,234,0.45); color: #f7f4ea; }
   .btn-ghost:hover { background: rgba(247,244,234,0.13); color: #f7f4ea; }
   .footer-link:hover { color: #1b2a21; }
+
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #35604a; }
+  .mono-note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); }
+  .h2 { margin: 14px 0 0; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; text-wrap: balance; }
+  .section { max-width: 1320px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 20px 0; }
+  /* Grey hatch used for every not-yet-supplied photo. */
+  .shot { background: repeating-linear-gradient(135deg, rgba(27,42,33,0.09) 0 12px, rgba(27,42,33,0.03) 12px 24px), #e4dfcd;
+          display: flex; align-items: center; justify-content: center; padding: 0 14px; }
+  .shot span { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.5); text-align: center; }
+  .shot-dark { background: repeating-linear-gradient(135deg, rgba(247,244,234,0.14) 0 12px, rgba(247,244,234,0.05) 12px 24px), #2e4a39; }
+  .shot-dark span { color: rgba(233,227,211,0.6); }
 
   /* Active state rides on aria-pressed, so JS sets one attribute and CSS does the rest. */
   .trim { text-align: left; cursor: pointer; font-family: inherit; color: #1b2a21; padding: 18px 20px;
@@ -47,6 +59,8 @@
   #navDesktop { display: flex; align-items: center; gap: 26px; }
   #navToggle, #navMobile { display: none; }
   #navMobile.open { display: flex; }
+  #navMobile a { padding: 14px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid rgba(27,42,33,0.08); }
+  #navMobile a:last-child { border-bottom: 0; }
   @media (max-width: 859px) {
     #navDesktop { display: none; }
     #navToggle { display: flex; }
@@ -58,24 +72,18 @@
 
   <div style="background: #22392c; color: #e9e3d3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 9px 16px; text-align: center;">
     <span style="width: 6px; height: 6px; border-radius: 50%; background: #8dbf9a; flex: 0 0 auto;"></span>
-    <span>2027 build slots now open — reserve with a refundable deposit</span>
+    <span data-c="banner"></span>
   </div>
 
   <header style="position: sticky; top: 0; z-index: 40; background: rgba(242,237,224,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(27,42,33,0.12);">
     <div style="max-width: 1320px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; gap: 20px;">
       <a href="#top" style="display: flex; align-items: center; gap: 10px; flex: 0 0 auto;">
         <span style="width: 26px; height: 26px; border-radius: 7px; background: #35604a; display: block;"></span>
-        <span style="font-weight: 800; font-size: 19px; letter-spacing: -0.02em; color: #1b2a21;">OPTIMUS OUTDOORS</span>
+        <span data-c="site.wordmark" style="font-weight: 800; font-size: 19px; letter-spacing: -0.02em; color: #1b2a21;"></span>
       </a>
-      <nav id="navDesktop" style="margin-left: 18px; font-size: 14px; font-weight: 500; flex: 1 1 auto;">
-        <a href="#build" style="color: #1b2a21;">Build</a>
-        <a href="#features" style="color: #1b2a21;">Features</a>
-        <a href="#specs" style="color: #1b2a21;">Specs</a>
-        <a href="#interior" style="color: #1b2a21;">Interior</a>
-        <a href="#faq" style="color: #1b2a21;">FAQ</a>
-      </nav>
+      <nav id="navDesktop" style="margin-left: 18px; font-size: 14px; font-weight: 500; flex: 1 1 auto;"></nav>
       <div style="display: flex; align-items: center; gap: 10px; flex: 0 0 auto; margin-left: auto;">
-        <a href="#build" class="btn-green" style="padding: 11px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;">Reserve</a>
+        <a href="#build" class="btn-green" data-c="reserveLabel" style="padding: 11px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;"></a>
         <button type="button" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMobile" style="width: 42px; height: 42px; border: 1px solid rgba(27,42,33,0.18); border-radius: 12px; background: transparent; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer;">
           <span style="width: 16px; height: 2px; background: #1b2a21; display: block;"></span>
           <span style="width: 16px; height: 2px; background: #1b2a21; display: block;"></span>
@@ -83,120 +91,97 @@
         </button>
       </div>
     </div>
-    <nav id="navMobile" style="border-top: 1px solid rgba(27,42,33,0.12); background: #f7f4ea; padding: 8px 20px 18px; flex-direction: column;">
-      <a href="#build" style="padding: 14px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid rgba(27,42,33,0.08);">Build</a>
-      <a href="#features" style="padding: 14px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid rgba(27,42,33,0.08);">Features</a>
-      <a href="#specs" style="padding: 14px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid rgba(27,42,33,0.08);">Specs</a>
-      <a href="#interior" style="padding: 14px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid rgba(27,42,33,0.08);">Interior</a>
-      <a href="#faq" style="padding: 14px 0; font-size: 18px; font-weight: 600;">FAQ</a>
-    </nav>
+    <nav id="navMobile" style="border-top: 1px solid rgba(27,42,33,0.12); background: #f7f4ea; padding: 8px 20px 18px; flex-direction: column;"></nav>
   </header>
 
   <section id="top" style="max-width: 1320px; margin: 0 auto; padding: 22px 20px 0;">
     <div style="position: relative; border-radius: 22px; overflow: hidden; background: repeating-linear-gradient(135deg, rgba(27,42,33,0.09) 0 12px, rgba(27,42,33,0.03) 12px 24px), #ded8c6; min-height: clamp(360px, 62vh, 640px); display: flex; flex-direction: column; justify-content: flex-end;">
       <div style="position: absolute; top: 16px; left: 16px; right: 16px; display: flex; justify-content: flex-start;">
-        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(27,42,33,0.55); background: rgba(247,244,234,0.8); padding: 7px 12px; border-radius: 6px;">hero photo — camper at camp, 3200&times;1800</span>
+        <span data-c="hero.photoNote" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(27,42,33,0.55); background: rgba(247,244,234,0.8); padding: 7px 12px; border-radius: 6px;"></span>
       </div>
       <div style="position: relative; padding: clamp(64px, 12vw, 130px) clamp(20px, 4vw, 44px) clamp(20px, 4vw, 44px); background: linear-gradient(to top, rgba(20,32,25,0.95) 0%, rgba(20,32,25,0.92) 40%, rgba(20,32,25,0.82) 65%, rgba(20,32,25,0.45) 85%, rgba(20,32,25,0) 100%);">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #cfe0d2; margin-bottom: 12px;">Flatbed truck camper &middot; 4-season</div>
-        <h1 style="margin: 0; font-size: clamp(40px, 8vw, 92px); line-height: 0.94; letter-spacing: -0.035em; font-weight: 800; color: #f7f4ea; text-wrap: balance;">OPTIMUS O1</h1>
-        <p style="margin: 14px 0 0; max-width: 520px; font-size: clamp(15px, 2.2vw, 19px); line-height: 1.5; color: rgba(247,244,234,0.82); text-wrap: pretty;">A composite-shell camper built for washboard roads and long winters. 1,300&nbsp;lb dry, off-grid for a week, and it fits in a standard garage.</p>
+        <div data-c="hero.eyebrow" class="eyebrow" style="color: #cfe0d2; margin-bottom: 12px;"></div>
+        <h1 data-c="hero.title" style="margin: 0; font-size: clamp(40px, 8vw, 92px); line-height: 0.94; letter-spacing: -0.035em; font-weight: 800; color: #f7f4ea; text-wrap: balance;"></h1>
+        <p data-c="hero.body" style="margin: 14px 0 0; max-width: 520px; font-size: clamp(15px, 2.2vw, 19px); line-height: 1.5; color: rgba(247,244,234,0.82); text-wrap: pretty;"></p>
         <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px;">
-          <a href="#build" class="btn-cream" style="padding: 15px 26px; border-radius: 999px; font-weight: 700; font-size: 15px;">Build yours</a>
-          <a href="#specs" class="btn-ghost" style="padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 15px;">See the specs</a>
+          <a href="#build" class="btn-cream" data-c="hero.primaryCta" style="padding: 15px 26px; border-radius: 999px; font-weight: 700; font-size: 15px;"></a>
+          <a href="#specs" class="btn-ghost" data-c="hero.secondaryCta" style="padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 15px;"></a>
         </div>
       </div>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: rgba(27,42,33,0.12); border: 1px solid rgba(27,42,33,0.12); border-radius: 16px; overflow: hidden; margin-top: 14px;">
-      <div style="background: #f7f4ea; padding: 18px 20px;"><div style="font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em;">1,300 lb</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); margin-top: 6px;">Dry weight</div></div>
-      <div style="background: #f7f4ea; padding: 18px 20px;"><div style="font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em;">6&#39;4&quot;</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); margin-top: 6px;">Standing height</div></div>
-      <div style="background: #f7f4ea; padding: 18px 20px;"><div style="font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em;">7 days</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); margin-top: 6px;">Off-grid</div></div>
-      <div style="background: #f7f4ea; padding: 18px 20px;"><div style="font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.02em;">4-season</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); margin-top: 6px;">Insulation</div></div>
-    </div>
+    <div id="heroStats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: rgba(27,42,33,0.12); border: 1px solid rgba(27,42,33,0.12); border-radius: 16px; overflow: hidden; margin-top: 14px;"></div>
   </section>
 
-  <section id="build" style="max-width: 1320px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 20px 0;">
+  <section id="build" class="section">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(24px, 4vw, 56px); align-items: start;">
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #35604a;">01 &middot; Configure</div>
-        <h2 style="margin: 14px 0 0; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; text-wrap: balance;">Three trims. One shell.</h2>
-        <p style="margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: rgba(27,42,33,0.72); max-width: 46ch; text-wrap: pretty;">Every O1 starts with the same insulated composite shell. Pick how far off the grid you plan to get.</p>
+        <div data-c="build.eyebrow" class="eyebrow"></div>
+        <h2 data-c="build.heading" class="h2"></h2>
+        <p data-c="build.body" style="margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: rgba(27,42,33,0.72); max-width: 46ch; text-wrap: pretty;"></p>
         <div id="trimList" style="display: flex; flex-direction: column; gap: 12px; margin-top: 28px;"></div>
       </div>
       <div style="background: #f7f4ea; border: 1px solid rgba(27,42,33,0.12); border-radius: 20px; padding: clamp(18px, 3vw, 28px);">
-        <div style="border-radius: 14px; overflow: hidden; background: repeating-linear-gradient(135deg, rgba(27,42,33,0.09) 0 12px, rgba(27,42,33,0.03) 12px 24px), #e4dfcd; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;">
-          <span id="trimShot" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.5); text-align: center; padding: 0 16px;"></span>
-        </div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); margin: 22px 0 10px;">Shell colorway</div>
+        <div class="shot" style="border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 3;"><span id="trimShot"></span></div>
+        <div data-c="colorwayLabel" class="mono-note" style="margin: 22px 0 10px;"></div>
         <div id="cwList" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
         <div id="cwName" style="margin-top: 12px; font-size: 14px; font-weight: 600;"></div>
         <div style="height: 1px; background: rgba(27,42,33,0.12); margin: 22px 0;"></div>
         <div id="trimIncludes" style="display: flex; flex-direction: column; gap: 10px;"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px;">
           <a href="#faq" id="reserveBtn" class="btn-green" style="padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; flex: 1 1 160px; text-align: center;"></a>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(27,42,33,0.6); line-height: 1.5;"><span id="trimPrice"></span><br>$1,000 deposit</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(27,42,33,0.6); line-height: 1.5;"><span id="trimPrice"></span><br><span data-c="depositNote"></span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="features" style="max-width: 1320px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 20px 0;">
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #35604a;">02 &middot; Built for it</div>
-    <h2 style="margin: 14px 0 34px; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; max-width: 22ch; text-wrap: balance;">Details that matter at mile 400.</h2>
+  <section id="features" class="section">
+    <div data-c="features.eyebrow" class="eyebrow"></div>
+    <h2 data-c="features.heading" class="h2" style="margin-bottom: 34px; max-width: 22ch;"></h2>
     <div id="featureGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;"></div>
   </section>
 
   <section id="interior" style="margin-top: clamp(56px, 9vw, 104px); background: #22392c; color: #e9e3d3;">
     <div style="max-width: 1320px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 60px); align-items: center;">
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8dbf9a;">03 &middot; Interior</div>
-        <h2 style="margin: 14px 0 0; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; color: #f7f4ea; text-wrap: balance;">Stand up, cook, sleep, work.</h2>
-        <p style="margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: rgba(233,227,211,0.78); max-width: 44ch; text-wrap: pretty;">6&#39;4&quot; of standing headroom over the galley, a fixed east-west queen, and a dinette that seats two adults with the door closed.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 18px; margin-top: 32px;">
-          <div style="border-top: 1px solid rgba(233,227,211,0.25); padding-top: 12px;"><div style="font-size: 17px; font-weight: 700; color: #f7f4ea;">Galley</div><div style="font-size: 14px; line-height: 1.5; color: rgba(233,227,211,0.7); margin-top: 4px;">Stainless sink, 2-burner, 4.5 cu ft fridge</div></div>
-          <div style="border-top: 1px solid rgba(233,227,211,0.25); padding-top: 12px;"><div style="font-size: 17px; font-weight: 700; color: #f7f4ea;">Sleep</div><div style="font-size: 14px; line-height: 1.5; color: rgba(233,227,211,0.7); margin-top: 4px;">Fixed queen, 10&quot; mattress, reading lights</div></div>
-          <div style="border-top: 1px solid rgba(233,227,211,0.25); padding-top: 12px;"><div style="font-size: 17px; font-weight: 700; color: #f7f4ea;">Work</div><div style="font-size: 14px; line-height: 1.5; color: rgba(233,227,211,0.7); margin-top: 4px;">Dinette converts to a 2-person desk</div></div>
-          <div style="border-top: 1px solid rgba(233,227,211,0.25); padding-top: 12px;"><div style="font-size: 17px; font-weight: 700; color: #f7f4ea;">Storage</div><div style="font-size: 14px; line-height: 1.5; color: rgba(233,227,211,0.7); margin-top: 4px;">11 cabinets, 2 exterior gear lockers</div></div>
-        </div>
+        <div data-c="interior.eyebrow" class="eyebrow" style="color: #8dbf9a;"></div>
+        <h2 data-c="interior.heading" class="h2" style="color: #f7f4ea;"></h2>
+        <p data-c="interior.body" style="margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: rgba(233,227,211,0.78); max-width: 44ch; text-wrap: pretty;"></p>
+        <div id="interiorPoints" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 18px; margin-top: 32px;"></div>
       </div>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-        <div style="grid-column: span 2; border-radius: 18px; background: repeating-linear-gradient(135deg, rgba(247,244,234,0.14) 0 12px, rgba(247,244,234,0.05) 12px 24px), #2e4a39; aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(233,227,211,0.6); text-align: center; padding: 0 14px;">interior wide — galley + dinette</span></div>
-        <div style="border-radius: 18px; background: repeating-linear-gradient(135deg, rgba(247,244,234,0.14) 0 12px, rgba(247,244,234,0.05) 12px 24px), #2e4a39; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(233,227,211,0.6);">bed detail</span></div>
-        <div style="border-radius: 18px; background: repeating-linear-gradient(135deg, rgba(247,244,234,0.14) 0 12px, rgba(247,244,234,0.05) 12px 24px), #2e4a39; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(233,227,211,0.6);">floorplan</span></div>
+        <div class="shot shot-dark" style="grid-column: span 2; border-radius: 18px; aspect-ratio: 16 / 10;"><span data-c="interior.photoNotes.0"></span></div>
+        <div class="shot shot-dark" style="border-radius: 18px; aspect-ratio: 1 / 1;"><span data-c="interior.photoNotes.1"></span></div>
+        <div class="shot shot-dark" style="border-radius: 18px; aspect-ratio: 1 / 1;"><span data-c="interior.photoNotes.2"></span></div>
       </div>
     </div>
   </section>
 
-  <section id="specs" style="max-width: 1320px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 20px 0;">
+  <section id="specs" class="section">
     <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px;">
       <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #35604a;">04 &middot; Specifications</div>
-        <h2 style="margin: 14px 0 0; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700;">The numbers.</h2>
+        <div data-c="specs.eyebrow" class="eyebrow"></div>
+        <h2 data-c="specs.heading" class="h2"></h2>
       </div>
-      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(27,42,33,0.55);">Overland trim shown &middot; imperial</div>
+      <div data-c="specs.note" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(27,42,33,0.55);"></div>
     </div>
     <div id="specTable" style="margin-top: 28px; border: 1px solid rgba(27,42,33,0.12); border-radius: 18px; overflow: hidden; background: #f7f4ea;"></div>
   </section>
 
   <section id="faq" style="max-width: 900px; margin: 0 auto; padding: clamp(56px, 9vw, 104px) 20px 0;">
-    <h2 style="margin: 0 0 26px; font-size: clamp(28px, 4.2vw, 44px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 700;">Questions, answered.</h2>
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      <details class="faq" open><summary>What trucks does the O1 fit?</summary><p>Any flatbed on a 3/4-ton or 1-ton chassis, 6.5 ft bed or longer. We ship a subframe kit matched to your make and model, and mount it at the shop or send it out with instructions.</p></details>
-      <details class="faq"><summary>How long is the wait?</summary><p>Roughly 7–9 months from deposit to delivery. Slots are released in quarterly batches; the deposit holds your place in the queue and is refundable up to the build start date.</p></details>
-      <details class="faq"><summary>Can I finance it?</summary><p>Yes. We work with two RV lenders who treat truck campers as recreational vehicles, with terms up to 15 years. Pre-qualification takes about a day.</p></details>
-      <details class="faq"><summary>Is it really four-season?</summary><p>The shell has no thermal bridges and every tank sits inside the heated envelope. Owners winter-camp it below 0°F on the Overland and Expedition trims.</p></details>
-    </div>
+    <h2 data-c="faq.heading" style="margin: 0 0 26px; font-size: clamp(28px, 4.2vw, 44px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 700;"></h2>
+    <div id="faqList" style="display: flex; flex-direction: column; gap: 10px;"></div>
   </section>
 
   <section style="max-width: 1320px; margin: clamp(56px, 9vw, 104px) auto 0; padding: 0 20px;">
     <div style="border-radius: 22px; background: #35604a; color: #f7f4ea; padding: clamp(32px, 6vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; align-items: center;">
       <div>
-        <h2 style="margin: 0; font-size: clamp(28px, 4.4vw, 46px); line-height: 1.03; letter-spacing: -0.03em; font-weight: 700; text-wrap: balance;">Come see one in person.</h2>
-        <p style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: rgba(247,244,234,0.82); max-width: 40ch;">Demo units in Bend, OR and Golden, CO. Walkthroughs run Thursday through Sunday.</p>
+        <h2 data-c="cta.heading" style="margin: 0; font-size: clamp(28px, 4.4vw, 46px); line-height: 1.03; letter-spacing: -0.03em; font-weight: 700; text-wrap: balance;"></h2>
+        <p data-c="cta.body" style="margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: rgba(247,244,234,0.82); max-width: 40ch;"></p>
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-        <a href="#top" class="btn-cream" style="padding: 15px 26px; border-radius: 999px; font-weight: 700; font-size: 15px;">Book a walkthrough</a>
-        <a href="#top" class="btn-ghost" style="padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 15px;">Download spec sheet</a>
+        <a href="#top" class="btn-cream" data-c="cta.primary" style="padding: 15px 26px; border-radius: 999px; font-weight: 700; font-size: 15px;"></a>
+        <a href="#top" class="btn-ghost" data-c="cta.secondary" style="padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 15px;"></a>
       </div>
     </div>
   </section>
@@ -206,13 +191,13 @@
       <div>
         <div style="display: flex; align-items: center; gap: 10px;">
           <span style="width: 22px; height: 22px; border-radius: 6px; background: #35604a; display: block;"></span>
-          <span style="font-weight: 800; font-size: 17px; letter-spacing: -0.02em;">OPTIMUS OUTDOORS</span>
+          <span data-c="site.wordmark" style="font-weight: 800; font-size: 17px; letter-spacing: -0.02em;"></span>
         </div>
-        <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: rgba(27,42,33,0.6); max-width: 30ch;">Overland campers built in Bend, Oregon.</p>
+        <p data-c="footer.blurb" style="margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: rgba(27,42,33,0.6); max-width: 30ch;"></p>
       </div>
       <div id="footerCols" style="display: contents;"></div>
     </div>
-    <div style="padding-top: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(27,42,33,0.5);">&copy; 2026 Optimus Outdoors &middot; Mockup</div>
+    <div data-c="footer.copyright" style="padding-top: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(27,42,33,0.5);"></div>
   </footer>
 
   <div style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: rgba(247,244,234,0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(27,42,33,0.14);">
@@ -221,79 +206,78 @@
         <div id="stickyName" style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
         <div id="stickyMeta" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(27,42,33,0.6);"></div>
       </div>
-      <a href="#build" class="btn-green" style="padding: 12px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; flex: 0 0 auto;">Reserve</a>
+      <a href="#build" class="btn-green" data-c="reserveLabel" style="padding: 12px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; flex: 0 0 auto;"></a>
     </div>
   </div>
 </div>
 
+<script src="content.js"></script>
 <script>
-const TRIMS = [
-  { name: 'Basecamp', price: 'from $46,900', blurb: 'Insulated shell, queen bed, 12V fan, and a clean slate for your own build-out.',
-    shot: 'basecamp trim — exterior 3/4 view',
-    includes: ['Composite shell, 2" foam core', 'Fixed east-west queen', 'Two awning windows + roof hatch', '100Ah lithium, 200W solar', 'Rear entry with screen door'] },
-  { name: 'Overland', price: 'from $62,400', blurb: 'The full galley, 400Ah of power, and water for a week of dry camping.',
-    shot: 'overland trim — exterior 3/4 view',
-    includes: ['Galley with 2-burner + sink', '30 gal fresh, 12 gal grey', '400Ah lithium, 600W solar', 'Diesel air heater + hot water', 'Convertible dinette for two'] },
-  { name: 'Expedition', price: 'from $79,800', blurb: 'Arctic package, indoor shower, and 800Ah for working off-grid indefinitely.',
-    shot: 'expedition trim — exterior 3/4 view',
-    includes: ['Arctic package, R-14 walls', 'Wet bath with cassette toilet', '800Ah lithium, 1200W solar', 'Starlink mount + 12V router', 'Dual-pane heated windows'] }
-];
-const COLORWAYS = [
-  { name: 'Lichen Green', hex: '#4d6b52' },
-  { name: 'Bone Beige',   hex: '#e0d9c4' },
-  { name: 'Basalt',       hex: '#3a3d3a' },
-  { name: 'Sagebrush',    hex: '#8f9a7d' }
-];
-const FEATURES = [
-  { title: 'One-piece composite shell', body: 'Vacuum-bonded fiberglass over foam core. No wood, no seams to leak, no thermal bridges.', shot: 'shell detail — corner radius' },
-  { title: 'Torsion-free mount', body: 'A three-point subframe lets the flatbed twist under the camper instead of through it.', shot: 'underside — subframe mount' },
-  { title: 'Power that lasts', body: 'Lithium bank, MPPT solar, and a 2000W inverter wired for a fridge, laptops, and an induction hob.', shot: 'electrical bay — open door' },
-  { title: 'Garage-friendly', body: 'Under 8 ft of total height on most flatbeds, so it comes home with you instead of into storage.', shot: 'camper in home garage' }
-];
-const SPECS = [
-  ['Exterior length', '12\' 6"'], ['Exterior width', '7\' 0"'], ['Interior standing height', '6\' 4"'],
-  ['Dry weight', '1,300 lb'], ['Fresh / grey water', '30 gal / 12 gal'], ['Battery', '400 Ah LiFePO4 (12V)'],
-  ['Solar', '600 W roof array, MPPT'], ['Heat', 'Diesel air heater, 2 kW'],
-  ['Wall insulation', 'R-11 walls, R-14 roof'], ['Warranty', '5-year structural, 2-year systems']
-];
-const FOOTER = [
-  { title: 'Campers', links: ['O1 Basecamp', 'O1 Overland', 'O1 Expedition', 'Compare trims'] },
-  { title: 'Company', links: ['About the shop', 'Build process', 'Demo locations', 'Careers'] },
-  { title: 'Support', links: ['Owner manuals', 'Service requests', 'Financing', 'Contact'] }
-];
+/* Renders content.js into the skeleton above. You should not need to edit
+   this file to change wording — all text lives in content.js. */
 
 const MONO = "font-family: 'IBM Plex Mono', monospace;";
 const el = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+// 'interior.photoNotes.0' -> CONTENT.interior.photoNotes[0]
+const get = path => path.split('.').reduce((o, k) => (o == null ? o : o[k]), CONTENT);
 
-let trim = 1, cw = 0;
+document.title = CONTENT.site.tabTitle;
+document.querySelector('meta[name="description"]').content = CONTENT.site.description;
 
-el('featureGrid').innerHTML = FEATURES.map(f => `
+// Every element carrying data-c gets its text from that path in content.js.
+document.querySelectorAll('[data-c]').forEach(node => {
+  const value = get(node.dataset.c);
+  if (value == null) { console.warn('content.js has no value for:', node.dataset.c); return; }
+  node.textContent = value;
+});
+
+const navLinks = CONTENT.nav.map(n => `<a href="${esc(n.href)}" style="color:#1b2a21;">${esc(n.label)}</a>`).join('');
+el('navDesktop').innerHTML = navLinks;
+el('navMobile').innerHTML = navLinks;
+
+el('heroStats').innerHTML = CONTENT.hero.stats.map(s => `
+  <div style="background:#f7f4ea;padding:18px 20px;">
+    <div style="font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-0.02em;">${esc(s.value)}</div>
+    <div class="mono-note" style="margin-top:6px;">${esc(s.label)}</div>
+  </div>`).join('');
+
+el('featureGrid').innerHTML = CONTENT.features.items.map(f => `
   <div style="background:#f7f4ea;border:1px solid rgba(27,42,33,0.12);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;">
-    <div style="background:repeating-linear-gradient(135deg,rgba(27,42,33,0.09) 0 12px,rgba(27,42,33,0.03) 12px 24px),#e4dfcd;aspect-ratio:5/4;display:flex;align-items:center;justify-content:center;padding:0 14px;">
-      <span style="${MONO}font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(27,42,33,0.5);text-align:center;">${esc(f.shot)}</span>
-    </div>
+    <div class="shot" style="aspect-ratio:5/4;"><span>${esc(f.photoNote)}</span></div>
     <div style="padding:20px 20px 24px;">
       <h3 style="margin:0;font-size:19px;font-weight:700;letter-spacing:-0.01em;">${esc(f.title)}</h3>
       <p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(27,42,33,0.72);text-wrap:pretty;">${esc(f.body)}</p>
     </div>
   </div>`).join('');
 
-el('specTable').innerHTML = SPECS.map(([label, value]) => `
+el('interiorPoints').innerHTML = CONTENT.interior.points.map(p => `
+  <div style="border-top:1px solid rgba(233,227,211,0.25);padding-top:12px;">
+    <div style="font-size:17px;font-weight:700;color:#f7f4ea;">${esc(p.title)}</div>
+    <div style="font-size:14px;line-height:1.5;color:rgba(233,227,211,0.7);margin-top:4px;">${esc(p.body)}</div>
+  </div>`).join('');
+
+el('specTable').innerHTML = CONTENT.specs.rows.map(([label, value]) => `
   <div style="display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(27,42,33,0.08);">
     <span style="${MONO}font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(27,42,33,0.6);">${esc(label)}</span>
     <span style="font-size:16px;font-weight:600;">${esc(value)}</span>
   </div>`).join('');
 
-el('footerCols').innerHTML = FOOTER.map(col => `
+el('faqList').innerHTML = CONTENT.faq.items.map((f, i) => `
+  <details class="faq"${i === 0 ? ' open' : ''}>
+    <summary>${esc(f.q)}</summary>
+    <p>${esc(f.a)}</p>
+  </details>`).join('');
+
+el('footerCols').innerHTML = CONTENT.footer.columns.map(col => `
   <div>
-    <div style="${MONO}font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(27,42,33,0.55);margin-bottom:12px;">${esc(col.title)}</div>
+    <div class="mono-note" style="margin-bottom:12px;">${esc(col.title)}</div>
     <div style="display:flex;flex-direction:column;gap:8px;">
       ${col.links.map(l => `<a class="footer-link" href="#top" style="font-size:14px;color:rgba(27,42,33,0.8);">${esc(l)}</a>`).join('')}
     </div>
   </div>`).join('');
 
-el('trimList').innerHTML = TRIMS.map((t, i) => `
+el('trimList').innerHTML = CONTENT.trims.map((t, i) => `
   <button type="button" class="trim" data-trim="${i}" aria-pressed="false">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;">
       <span style="font-size:20px;font-weight:700;letter-spacing:-0.01em;">${esc(t.name)}</span>
@@ -302,17 +286,21 @@ el('trimList').innerHTML = TRIMS.map((t, i) => `
     <div style="margin-top:6px;font-size:14px;line-height:1.5;color:rgba(27,42,33,0.7);">${esc(t.blurb)}</div>
   </button>`).join('');
 
-el('cwList').innerHTML = COLORWAYS.map((c, i) =>
-  `<button type="button" class="swatch" data-cw="${i}" aria-pressed="false" title="${esc(c.name)}" aria-label="${esc(c.name)}" style="background:${c.hex};"></button>`).join('');
+el('cwList').innerHTML = CONTENT.colorways.map((c, i) =>
+  `<button type="button" class="swatch" data-cw="${i}" aria-pressed="false" title="${esc(c.name)}" aria-label="${esc(c.name)}" style="background:${esc(c.hex)};"></button>`).join('');
+
+// Clamped so a bad defaultTrim in content.js can't blank the panel.
+let trim = Math.min(Math.max(CONTENT.defaultTrim | 0, 0), CONTENT.trims.length - 1);
+let cw = 0;
 
 // Everything downstream of the two selections.
 function render() {
-  const t = TRIMS[trim], c = COLORWAYS[cw];
-  el('trimShot').textContent = t.shot;
+  const t = CONTENT.trims[trim], c = CONTENT.colorways[cw];
+  el('trimShot').textContent = t.photoNote;
   el('trimPrice').textContent = t.price;
-  el('reserveBtn').textContent = 'Reserve ' + t.name;
+  el('reserveBtn').textContent = CONTENT.reservePrefix + t.name;
   el('cwName').textContent = c.name;
-  el('stickyName').textContent = 'O1 ' + t.name;
+  el('stickyName').textContent = CONTENT.site.model + ' ' + t.name;
   el('stickyMeta').textContent = t.price + ' · ' + c.name;
   el('trimIncludes').innerHTML = t.includes.map(line => `
     <div style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;">
