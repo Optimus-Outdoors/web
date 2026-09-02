@@ -219,7 +219,6 @@ const CONTENT = {
     methods: [
       { label: 'Email',     value: 'hello@optimus-outdoors.com', href: 'mailto:hello@optimus-outdoors.com' },
       { label: 'Instagram', value: '@optimus_outdoors',          href: 'https://instagram.com/optimus_outdoors' },
-      { label: 'Phone',     value: '(541) 555-0134',            href: 'tel:+15415550134' },
       { label: 'Shop',      value: 'Portland, Oregon · Thu–Sun, 9–5', href: '' },
     ],
     closeLabel: 'Close',
