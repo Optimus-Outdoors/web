@@ -193,7 +193,7 @@ const CONTENT = {
   // ---------------------------------------------------------------
   cta: {
     heading:   'Come see one in person.',
-    body:      'Demo units in Bend, OR and Golden, CO. Walkthroughs run Thursday through Sunday.',
+    body:      'Demo units in Portland, OR and Golden, CO. Walkthroughs run Thursday through Sunday.',
     primary:   'Book a walkthrough',
     secondary: 'Download spec sheet',
   },
@@ -220,7 +220,7 @@ const CONTENT = {
       { label: 'Email',     value: 'hello@optimus-outdoors.com', href: 'mailto:hello@optimus-outdoors.com' },
       { label: 'Instagram', value: '@optimusoutdoors',          href: 'https://instagram.com/optimusoutdoors' },
       { label: 'Phone',     value: '(541) 555-0134',            href: 'tel:+15415550134' },
-      { label: 'Shop',      value: 'Bend, Oregon · Thu–Sun, 9–5', href: '' },
+      { label: 'Shop',      value: 'Portland, Oregon · Thu–Sun, 9–5', href: '' },
     ],
     closeLabel: 'Close',
 
@@ -254,7 +254,7 @@ const CONTENT = {
   // Footer
   // ---------------------------------------------------------------
   footer: {
-    blurb: 'Overland campers built in Bend, Oregon.',
+    blurb: 'Overland campers built in Portland, Oregon.',
     columns: [
       { title: 'Campers', links: ['Optimus B', 'Optimus One', 'Optimus Carbide', 'Compare trims'] },
       { title: 'Company', links: ['About the shop', 'Build process', 'Demo locations', 'Careers'] },
