@@ -109,8 +109,13 @@ assert.strictEqual(nodes.stickyMeta.textContent, t.price + ' · ' + cw.name);
 assert.strictEqual(nodes.reserveBtn.textContent, CONTENT.reservePrefix + t.name);
 assert.strictEqual(c('trimIncludes', 'div'), t.includes.length);
 
-app.click('trim', 0);
-assert.ok(nodes.trimIncludes.innerHTML.includes('2&quot; foam core'), 'quotes escaped');
+// Whichever trim carries a double quote in its includes must render it escaped.
+const quotedTrim = CONTENT.trims.findIndex(x => x.includes.some(l => l.includes('"')));
+assert.notStrictEqual(quotedTrim, -1, 'a trim with a quoted spec exists to test escaping');
+app.click('trim', quotedTrim);
+const quotedLine = CONTENT.trims[quotedTrim].includes.find(l => l.includes('"'));
+assert.ok(nodes.trimIncludes.innerHTML.includes(esc(quotedLine)), 'quotes escaped');
+assert.ok(!nodes.trimIncludes.innerHTML.includes(quotedLine), 'raw quote not emitted');
 
 // --- Contact dialog ------------------------------------------------------
 const M = CONTENT.contact.methods;

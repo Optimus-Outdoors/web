@@ -46,7 +46,7 @@ const CONTENT = {
   hero: {
     eyebrow:      'Flatbed truck camper · 4-season',
     title:        'OPTIMUS O1',
-    body:         'A composite-shell camper built for washboard roads and long winters. 1,300 lb dry, off-grid for a week, and it fits in a standard garage.',
+    body:         'The world\'s first collapsible hardshell camper. Light enough for any truck, 100% insulated, more secure than aluminum, and it collapses down to the size of a pick-up camper shell.',
     photoNote:    'hero photo — camper at camp, 3200×1800',   // delete once a real photo is in
     primaryCta:   'Build yours',
     secondaryCta: 'See the specs',
@@ -65,42 +65,41 @@ const CONTENT = {
   build: {
     eyebrow: '01 · Configure',
     heading: 'Three trims. One shell.',
-    body:    'Every O1 starts with the same insulated composite shell. Pick how far off the grid you plan to get.',
+    body:    'Every Optimus camper starts with the same insulated composite shell. Modular for quick changes: set up quickly, whether you\'re bringing the electric bike or the kids.',
   },
 
   // Add or remove a whole { ... } block to change how many trims there are.
   trims: [
     {
-      name:     'Basecamp',
+      name:     'B',
       price:    'from $16,900',
-      blurb:    'Insulated shell, queen bed, 12V fan, and a clean slate for your own build-out.',
-      photoNote:'basecamp trim — exterior 3/4 view',
+      blurb:    'Insulated shell, twin bed, clean slate for your own build-out.',
+      photoNote:'B trim — exterior 3/4 view',
       includes: [
-        'Composite shell, 2" foam core',
+        'Composite shell, 1.5" foam core',
         'Fixed east-west queen',
         'Two awning windows + roof hatch',
-        '100Ah lithium, 200W solar',
+        'Available solar / LiFePO4 battery',
         'Rear entry with screen door',
       ],
     },
     {
       name:     'One',
       price:    'from $32,400',
-      blurb:    'The full galley, 400Ah of power, and water for a week of dry camping.',
-      photoNote:'overland trim — exterior 3/4 view',
+      blurb:    'Full galley, shower, 400Ah of power, and water for a week.',
+      photoNote:'One trim — exterior 3/4 view',
       includes: [
-        'Galley with 2-burner + sink',
-        '30 gal fresh, 12 gal grey',
-        '800Ah lithium, 600W solar',
-        'Diesel air heater + hot water',
-        'Convertible dinette for two',
+        'Full galley',
+        'Shower',
+        '400Ah of power',
+        'Water for a week',
       ],
     },
     {
-      name:     'Expedition',
+      name:     'Carbide',
       price:    'from $59,800',
-      blurb:    'Arctic package, indoor shower, and 800Ah for working off-grid indefinitely.',
-      photoNote:'expedition trim — exterior 3/4 view',
+      blurb:    'Arctic package: hydronic heating, 800Ah, 600W solar, indoor shower/toilet, water filtration, and a Starlink terminal, for working off-grid indefinitely.',
+      photoNote:'Carbide trim — exterior 3/4 view',
       includes: [
         'Arctic package, R-10 walls',
         'Wet bath with cassette toilet',
@@ -130,10 +129,10 @@ const CONTENT = {
     eyebrow: '02 · Built for it',
     heading: 'Details that matter at mile 400.',
     items: [
-      { title: 'One-piece composite shell', body: 'Vacuum-bonded fiberglass over foam core. No wood, no seams to leak, no thermal bridges.', photoNote: 'shell detail — corner radius' },
-      { title: 'Torsion-free mount',        body: 'A three-point subframe lets the flatbed twist under the camper instead of through it.',   photoNote: 'underside — subframe mount' },
+      { title: 'Composite shell',    body: 'Vacuum-bonded fiberglass over foam core. No wood, no seams to leak, no thermal bridges. True four-season use.', photoNote: 'shell detail — corner radius' },
+      { title: 'Dual-axis actuation', body: 'Collapses from a full over-cab camper to a discreet pick-up shell.', photoNote: 'collapsed vs raised — side by side' },
       { title: 'Power that lasts',          body: 'Lithium bank, MPPT solar, and a 2000W inverter wired for a fridge, laptops, and an induction hob.', photoNote: 'electrical bay — open door' },
-      { title: 'Garage-friendly',           body: 'Under 8 ft of total height on most flatbeds, so it comes home with you instead of into storage.',   photoNote: 'camper in home garage' },
+      { title: 'Security',            body: 'Double-skin 1/8" fiberglass composite shell. Stronger than aluminum, scratch resistant, UV protected.', photoNote: 'shell edge — laminate cross-section' },
     ],
   },
 
@@ -146,9 +145,8 @@ const CONTENT = {
     body:    '6\'4" of standing headroom over the galley, a fixed east-west queen, and a dinette that seats two adults with the door closed.',
     points: [
       { title: 'Galley',  body: 'Stainless sink, 2-burner, 4.5 cu ft fridge' },
-      { title: 'Sleep',   body: 'Fixed queen, 10" mattress, reading lights' },
+      { title: 'Sleep',   body: 'Sizes range from twin to queen' },
       { title: 'Work',    body: 'Dinette converts to a 2-person desk' },
-      { title: 'Storage', body: '11 cabinets, 2 exterior gear lockers' },
     ],
     // Three image slots: one wide across the top, two square below.
     photoNotes: ['interior wide — galley + dinette', 'bed detail', 'floorplan'],
@@ -160,7 +158,7 @@ const CONTENT = {
   specs: {
     eyebrow: '04 · Specifications',
     heading: 'The numbers.',
-    note:    'Overland trim shown · imperial',
+    note:    'One trim shown · imperial',
     rows: [
       ['Exterior length',           '12\' 6"'],
       ['Exterior width',            '4\' 0"'],
@@ -170,7 +168,7 @@ const CONTENT = {
       ['Battery',                   '400 Ah LiFePO4 (12V)'],
       ['Solar',                     '600 W roof array, MPPT'],
       ['Heat',                      'Hydronic, 2 kW'],
-      ['Wall insulation',           'R-10 walls'],
+      ['Wall insulation',           'R-11, 1.5\" PIR foam core'],
       ['Warranty',                  '3-year structural, 1-year systems'],
     ],
   },
@@ -184,7 +182,7 @@ const CONTENT = {
       { q: 'What trucks does the O1 fit?', a: 'Any flatbed on a 3/4-ton or 1-ton chassis, 6.5 ft bed or longer. We ship a subframe kit matched to your make and model, and mount it at the shop or send it out with instructions.' },
       { q: 'How long is the wait?',        a: 'Roughly 7–9 months from deposit to delivery. Slots are released in quarterly batches; the deposit holds your place in the queue and is refundable up to the build start date.' },
       { q: 'Can I finance it?',            a: 'Yes. We work with two RV lenders who treat truck campers as recreational vehicles, with terms up to 15 years. Pre-qualification takes about a day.' },
-      { q: 'Is it really four-season?',    a: 'The shell has no thermal bridges and every tank sits inside the heated envelope. Owners winter-camp it below 0°F on the Overland and Expedition trims.' },
+      { q: 'Is it really four-season?',    a: 'The shell has no thermal bridges and every tank sits inside the heated envelope. Owners winter-camp it below 0°F on the One and Carbide trims.' },
     ],
   },
 
@@ -256,7 +254,7 @@ const CONTENT = {
   footer: {
     blurb: 'Overland campers built in Bend, Oregon.',
     columns: [
-      { title: 'Campers', links: ['O1 Basecamp', 'O1 Overland', 'O1 Expedition', 'Compare trims'] },
+      { title: 'Campers', links: ['Optimus B', 'Optimus One', 'Optimus Carbide', 'Compare trims'] },
       { title: 'Company', links: ['About the shop', 'Build process', 'Demo locations', 'Careers'] },
       { title: 'Support', links: ['Owner manuals', 'Service requests', 'Financing', 'Contact'] },
     ],
