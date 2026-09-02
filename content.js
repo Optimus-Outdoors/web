@@ -52,9 +52,9 @@ const CONTENT = {
     secondaryCta: 'See the specs',
     // The four boxes under the hero image.
     stats: [
-      { value: '1,300 lb', label: 'Dry weight' },
+      { value: 'Sub-500 lb', label: 'Dry weight' },
       { value: '6\'4"',    label: 'Standing height' },
-      { value: '7 days',   label: 'Off-grid' },
+      { value: '24/7',   label: 'Off-grid' },
       { value: '4-season', label: 'Insulation' },
     ],
   },
@@ -72,7 +72,7 @@ const CONTENT = {
   trims: [
     {
       name:     'Basecamp',
-      price:    'from $6,900',
+      price:    'from $16,900',
       blurb:    'Insulated shell, queen bed, 12V fan, and a clean slate for your own build-out.',
       photoNote:'basecamp trim — exterior 3/4 view',
       includes: [
@@ -84,29 +84,29 @@ const CONTENT = {
       ],
     },
     {
-      name:     'Overland',
-      price:    'from $62,400',
+      name:     'One',
+      price:    'from $32,400',
       blurb:    'The full galley, 400Ah of power, and water for a week of dry camping.',
       photoNote:'overland trim — exterior 3/4 view',
       includes: [
         'Galley with 2-burner + sink',
-        '30 gal fresh, 12 gal grey',
-        '400Ah lithium, 600W solar',
+        '30 gal fresh,
+        '800Ah lithium, 600W solar',
         'Diesel air heater + hot water',
         'Convertible dinette for two',
       ],
     },
     {
       name:     'Expedition',
-      price:    'from $79,800',
+      price:    'from $59,800',
       blurb:    'Arctic package, indoor shower, and 800Ah for working off-grid indefinitely.',
       photoNote:'expedition trim — exterior 3/4 view',
       includes: [
-        'Arctic package, R-14 walls',
+        'Arctic package, R-10 walls',
         'Wet bath with cassette toilet',
-        '800Ah lithium, 1200W solar',
+        '800Ah lithium, 600W solar',
         'Starlink mount + 12V router',
-        'Dual-pane heated windows',
+        'Dual-pane heated acrylic windows',
       ],
     },
   ],
@@ -115,10 +115,10 @@ const CONTENT = {
   // Paint colours. 'hex' is the actual colour — needs the # and 6 characters.
   colorwayLabel: 'Shell colorway',
   colorways: [
-    { name: 'Lichen Green', hex: '#4d6b52' },
+    { name: 'Lichen Green Wrap', hex: '#4d6b52' },
     { name: 'Bone Beige',   hex: '#e0d9c4' },
     { name: 'Basalt',       hex: '#3a3d3a' },
-    { name: 'Sagebrush',    hex: '#8f9a7d' },
+    { name: 'Sagebrush Wrap',    hex: '#8f9a7d' },
   ],
   reservePrefix: 'Reserve ',   // becomes "Reserve Overland"
   depositNote:   '$1,000 deposit',
@@ -163,15 +163,15 @@ const CONTENT = {
     note:    'Overland trim shown · imperial',
     rows: [
       ['Exterior length',           '12\' 6"'],
-      ['Exterior width',            '7\' 0"'],
+      ['Exterior width',            '4\' 0"'],
       ['Interior standing height',  '6\' 4"'],
-      ['Dry weight',                '1,300 lb'],
+      ['Dry weight',                'Sub-500 lb'],
       ['Fresh / grey water',        '30 gal / 12 gal'],
       ['Battery',                   '400 Ah LiFePO4 (12V)'],
       ['Solar',                     '600 W roof array, MPPT'],
-      ['Heat',                      'Diesel air heater, 2 kW'],
-      ['Wall insulation',           'R-11 walls, R-14 roof'],
-      ['Warranty',                  '5-year structural, 2-year systems'],
+      ['Heat',                      'Hydronic, 2 kW'],
+      ['Wall insulation',           'R-10 walls],
+      ['Warranty',                  '3-year structural, 1-year systems'],
     ],
   },
 
