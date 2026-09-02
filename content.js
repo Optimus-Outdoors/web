@@ -72,7 +72,7 @@ const CONTENT = {
   trims: [
     {
       name:     'Basecamp',
-      price:    'from $46,900',
+      price:    'from $6,900',
       blurb:    'Insulated shell, queen bed, 12V fan, and a clean slate for your own build-out.',
       photoNote:'basecamp trim — exterior 3/4 view',
       includes: [
