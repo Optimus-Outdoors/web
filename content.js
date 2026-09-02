@@ -17,10 +17,10 @@ const CONTENT = {
   // Browser tab + Google search result
   // ---------------------------------------------------------------
   site: {
-    tabTitle:    'Optimus O1 — Flatbed Truck Camper | Optimus Outdoors',
+    tabTitle:    'Optimus Outdoors — Collapsible Hardshell Truck Camper',
     description: 'A composite-shell flatbed truck camper built for washboard roads and long winters. 1,300 lb dry, off-grid for a week, fits in a standard garage.',
     wordmark:    'OPTIMUS OUTDOORS',   // top-left and footer logo text
-    model:       'O1',                 // used by the bottom bar, e.g. "O1 Overland"
+    model:       'Optimus',            // used by the bottom bar, e.g. "Optimus One"
   },
 
   // ---------------------------------------------------------------
@@ -45,7 +45,7 @@ const CONTENT = {
   // ---------------------------------------------------------------
   hero: {
     eyebrow:      'Flatbed truck camper · 4-season',
-    title:        'OPTIMUS O1',
+    title:        'OPTIMUS',
     body:         'The world\'s first collapsible hardshell camper. Light enough for any truck, 100% insulated, more secure than aluminum, and it collapses down to the size of a pick-up camper shell.',
     photoNote:    'hero photo — camper at camp, 3200×1800',   // delete once a real photo is in
     primaryCta:   'Build yours',
@@ -81,7 +81,6 @@ const CONTENT = {
         'Moonroof',
         'Ultra light weight',
         'Simple design',
-        'Two awning windows + roof hatch',
         'Available solar / LiFePO4 battery',
         'Rear entry with screen door',
       ],
@@ -104,7 +103,7 @@ const CONTENT = {
       blurb:    'Arctic package: hydronic heating, 800Ah, 600W solar, indoor shower/toilet, water filtration, and a Starlink terminal, for working off-grid indefinitely.',
       photoNote:'Carbide trim — exterior 3/4 view',
       includes: [
-        'Arctic package, R-10 walls',
+        'Arctic package, R-11 walls',
         'Wet bath with cassette toilet',
         '800Ah lithium, 600W solar',
         'Starlink mount + 12V router',
@@ -145,7 +144,7 @@ const CONTENT = {
   interior: {
     eyebrow: '03 · Interior',
     heading: 'Stand up, cook, sleep, work.',
-    body:    '6\'4" of standing headroom over the galley, a fixed east-west queen, and a dinette that seats two adults with the door closed.',
+    body:    '6\'4" of standing headroom over the galley, and a dinette that seats two adults with the door closed.',
     points: [
       { title: 'Galley',  body: 'Stainless sink, 2-burner, 4.5 cu ft fridge' },
       { title: 'Sleep',   body: 'Sizes range from twin to queen, with available moonroof for stargazing' },
@@ -171,7 +170,7 @@ const CONTENT = {
       ['Battery',                   '400 Ah LiFePO4 (12V)'],
       ['Solar',                     '600 W roof array, MPPT'],
       ['Heat',                      'Hydronic, 2 kW'],
-      ['Wall insulation',           'R-10, 1.5\" PIR foam core'],
+      ['Wall insulation',           'R-11, 1.5\" PIR foam core'],
       ['Warranty',                  '3-year structural, 1-year systems'],
     ],
   },
@@ -182,7 +181,7 @@ const CONTENT = {
   faq: {
     heading: 'Questions, answered.',
     items: [
-      { q: 'What trucks does the O1 fit?', a: 'Any flatbed on a 3/4-ton or 1-ton chassis, 6.5 ft bed or longer. We ship a subframe kit matched to your make and model, and mount it at the shop or send it out with instructions.' },
+      { q: 'What trucks does it fit?', a: 'Any flatbed on a 3/4-ton or 1-ton chassis, 6.5 ft bed or longer. We ship a subframe kit matched to your make and model, and mount it at the shop or send it out with instructions.' },
       { q: 'How long is the wait?',        a: 'Roughly 7–9 months from deposit to delivery. Slots are released in quarterly batches; the deposit holds your place in the queue and is refundable up to the build start date.' },
       { q: 'Can I finance it?',            a: 'Yes. We work with two RV lenders who treat truck campers as recreational vehicles, with terms up to 15 years. Pre-qualification takes about a day.' },
       { q: 'Is it really four-season?',    a: 'The shell has no thermal bridges and every tank sits inside the heated envelope. Owners winter-camp it below 0°F on the One and Carbide trims.' },
