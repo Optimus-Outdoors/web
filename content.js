@@ -77,7 +77,10 @@ const CONTENT = {
       photoNote:'B trim — exterior 3/4 view',
       includes: [
         'Composite shell, 1.5" foam core',
-        'Fixed east-west queen',
+        'Twin bed',
+        'Moonroof',
+        'Ultra light weight',
+        'Simple design',
         'Two awning windows + roof hatch',
         'Available solar / LiFePO4 battery',
         'Rear entry with screen door',
@@ -145,7 +148,7 @@ const CONTENT = {
     body:    '6\'4" of standing headroom over the galley, a fixed east-west queen, and a dinette that seats two adults with the door closed.',
     points: [
       { title: 'Galley',  body: 'Stainless sink, 2-burner, 4.5 cu ft fridge' },
-      { title: 'Sleep',   body: 'Sizes range from twin to queen' },
+      { title: 'Sleep',   body: 'Sizes range from twin to queen, with available moonroof for stargazing' },
       { title: 'Work',    body: 'Dinette converts to a 2-person desk' },
     ],
     // Three image slots: one wide across the top, two square below.
@@ -168,7 +171,7 @@ const CONTENT = {
       ['Battery',                   '400 Ah LiFePO4 (12V)'],
       ['Solar',                     '600 W roof array, MPPT'],
       ['Heat',                      'Hydronic, 2 kW'],
-      ['Wall insulation',           'R-11, 1.5\" PIR foam core'],
+      ['Wall insulation',           'R-10, 1.5\" PIR foam core'],
       ['Warranty',                  '3-year structural, 1-year systems'],
     ],
   },
