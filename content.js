@@ -217,7 +217,7 @@ const CONTENT = {
     blurb:       'Tell us the trim and colorway you want and we will send the deposit link and a delivery estimate. We answer within a day.',
     selectedLabel: 'Your selection',
     methods: [
-      { label: 'Email',     value: 'hello@optimusoutdoors.com', href: 'mailto:hello@optimusoutdoors.com' },
+      { label: 'Email',     value: 'hello@optimus-outdoors.com', href: 'mailto:hello@optimus-outdoors.com' },
       { label: 'Instagram', value: '@optimusoutdoors',          href: 'https://instagram.com/optimusoutdoors' },
       { label: 'Phone',     value: '(541) 555-0134',            href: 'tel:+15415550134' },
       { label: 'Shop',      value: 'Bend, Oregon · Thu–Sun, 9–5', href: '' },
