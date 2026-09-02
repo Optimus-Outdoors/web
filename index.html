@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- Title and description are set from content.js — edit them there. -->
 <title>Optimus Outdoors</title>
 <meta name="description" content="">
@@ -88,6 +88,16 @@
   #navMobile.open { display: flex; }
   #navMobile a { padding: 14px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid rgba(27,42,33,0.08); }
   #navMobile a:last-child { border-bottom: 0; }
+  /* iOS Safari anchors position:fixed to the taller layout viewport, so when
+     the bottom URL bar shrinks on scroll-down a gap opens under this bar.
+     ponytail: rather than track the visual viewport in JS, the ::after just
+     continues the bar's background downward so the gap has nothing to show. */
+  .sticky-cta { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .sticky-cta::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 120px;
+    background: rgba(247,244,234,0.95); pointer-events: none;
+  }
+
   /* The wordmark is the only flexible item in the header, so it absorbs the
      squeeze instead of pushing the Reserve button and hamburger off-screen. */
   .brand { flex: 0 1 auto; min-width: 0; }
@@ -238,7 +248,7 @@
     <div data-c="footer.copyright" style="padding-top: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(27,42,33,0.5);"></div>
   </footer>
 
-  <div style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: rgba(247,244,234,0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(27,42,33,0.14);">
+  <div class="sticky-cta" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: rgba(247,244,234,0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(27,42,33,0.14);">
     <div style="max-width: 1320px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 14px;">
       <div style="flex: 1 1 auto; min-width: 0;">
         <div id="stickyName" style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
