@@ -13,10 +13,17 @@ const js = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const nodes = {};
 const node = () => ({
   innerHTML: '', textContent: '', content: '', dataset: {}, attrs: {},
+  open: false,
   setAttribute(k, v) { this.attrs[k] = String(v); },
   addEventListener() {},
+  showModal() { this.open = true; },
+  close() { this.open = false; },
+  closest: () => null,
   classList: { toggle: () => true, remove() {} },
 });
+
+// Same escaping the page applies, so expected values match rendered markup.
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 // One stub node per data-c attribute actually present in index.html.
 const boundPaths = [...html.matchAll(/data-c="([^"]+)"/g)].map(m => m[1]);
@@ -88,6 +95,37 @@ assert.strictEqual(count('trimIncludes', 'div'), t.includes.length);
 // Quotes inside content.js must survive into the markup escaped.
 click('trim', 0);
 assert.ok(nodes.trimIncludes.innerHTML.includes('2&quot; foam core'), 'quotes escaped');
+
+// --- Contact dialog ------------------------------------------------------
+const M = CONTENT.contact.methods;
+assert.strictEqual(count('contactMethods', 'div'), M.length, 'one row per method');
+// Empty href renders as plain text, not a dead link.
+assert.strictEqual(count('contactMethods', 'a'), M.filter(m => m.href).length);
+for (const m of M) assert.ok(nodes.contactMethods.innerHTML.includes(esc(m.value)), 'shows ' + m.label);
+// Only outbound http links get a new tab; mailto/tel must open in place.
+assert.strictEqual((nodes.contactMethods.innerHTML.match(/target="_blank"/g) || []).length,
+  M.filter(m => /^https?:/.test(m.href)).length, 'new tab only for web links');
+assert.ok(/rel="noopener"/.test(nodes.contactMethods.innerHTML), 'new tabs are noopener');
+
+// The dialog reflects whatever trim is selected when it is opened.
+const dialog = nodes.contactDialog;
+assert.strictEqual(dialog.open, false, 'starts closed');
+const openContact = () => onClick({
+  target: { closest: sel => (sel === '[data-open-contact]' ? {} : null) },
+});
+click('trim', CONTENT.trims.length - 1);
+openContact();
+assert.strictEqual(dialog.open, true, 'reserve opens it');
+const sel = CONTENT.trims[CONTENT.trims.length - 1];
+assert.ok(nodes.contactSelection.textContent.includes(sel.name), 'shows selected trim');
+assert.ok(nodes.contactSelection.textContent.includes(sel.price), 'shows selected price');
+
+// Close button and backdrop click both dismiss it.
+onClick({ target: { closest: s => (s === '#contactClose' ? {} : null) } });
+assert.strictEqual(dialog.open, false, 'close button dismisses');
+openContact();
+onClick({ target: dialog });
+assert.strictEqual(dialog.open, false, 'backdrop click dismisses');
 
 // --- No stale branding left anywhere ------------------------------------
 const all = html + fs.readFileSync(__dirname + '/content.js', 'utf8');

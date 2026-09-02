@@ -199,6 +199,33 @@ const CONTENT = {
   },
 
   // ---------------------------------------------------------------
+  // The popup that opens when someone clicks any "Reserve" button.
+  //
+  // !! EVERY DETAIL BELOW IS MADE UP — replace before telling anyone
+  // !! about the site. The phone number is in the 555 range that films
+  // !! use, so it dials nowhere.
+  //
+  // Add or remove a whole { ... } line to change how many rows show.
+  // 'href' is what clicking it does:
+  //     mailto:you@example.com   opens their email app
+  //     https://...              opens a website
+  //     tel:+15415550134         dials on a phone
+  //     ''  (empty)              plain text, not clickable
+  // ---------------------------------------------------------------
+  contact: {
+    heading:     'Reserve your build slot',
+    blurb:       'Tell us the trim and colorway you want and we will send the deposit link and a delivery estimate. We answer within a day.',
+    selectedLabel: 'Your selection',
+    methods: [
+      { label: 'Email',     value: 'hello@optimusoutdoors.com', href: 'mailto:hello@optimusoutdoors.com' },
+      { label: 'Instagram', value: '@optimusoutdoors',          href: 'https://instagram.com/optimusoutdoors' },
+      { label: 'Phone',     value: '(541) 555-0134',            href: 'tel:+15415550134' },
+      { label: 'Shop',      value: 'Bend, Oregon · Thu–Sun, 9–5', href: '' },
+    ],
+    closeLabel: 'Close',
+  },
+
+  // ---------------------------------------------------------------
   // Footer
   // ---------------------------------------------------------------
   footer: {

@@ -25,6 +25,21 @@
   .btn-ghost:hover { background: rgba(247,244,234,0.13); color: #f7f4ea; }
   .footer-link:hover { color: #1b2a21; }
 
+  /* Buttons that need to look like the pill links. */
+  .btn { font-family: inherit; border: 0; cursor: pointer; }
+
+  /* Native <dialog>: ::backdrop is the grey-out, and showModal() handles
+     Esc-to-close and focus trapping. ponytail: no modal library. */
+  #contactDialog { border: 0; padding: 0; border-radius: 20px; background: #f7f4ea; color: #1b2a21;
+                   width: min(440px, calc(100vw - 32px)); box-shadow: 0 24px 60px rgba(20,32,25,0.28); }
+  #contactDialog::backdrop { background: rgba(20,32,25,0.55); backdrop-filter: blur(3px); }
+  #contactDialog .body { padding: clamp(22px, 5vw, 32px); }
+  .contact-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+                 padding: 13px 0; border-bottom: 1px solid rgba(27,42,33,0.1); }
+  .contact-row:last-child { border-bottom: 0; }
+  .contact-row a { font-weight: 600; }
+  .contact-row a:hover { text-decoration: underline; }
+
   .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #35604a; }
   .mono-note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); }
   .h2 { margin: 14px 0 0; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; text-wrap: balance; }
@@ -83,7 +98,7 @@
       </a>
       <nav id="navDesktop" style="margin-left: 18px; font-size: 14px; font-weight: 500; flex: 1 1 auto;"></nav>
       <div style="display: flex; align-items: center; gap: 10px; flex: 0 0 auto; margin-left: auto;">
-        <a href="#build" class="btn-green" data-c="reserveLabel" style="padding: 11px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;"></a>
+        <button type="button" class="btn btn-green" data-open-contact data-c="reserveLabel" style="padding: 11px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;"></button>
         <button type="button" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMobile" style="width: 42px; height: 42px; border: 1px solid rgba(27,42,33,0.18); border-radius: 12px; background: transparent; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer;">
           <span style="width: 16px; height: 2px; background: #1b2a21; display: block;"></span>
           <span style="width: 16px; height: 2px; background: #1b2a21; display: block;"></span>
@@ -128,7 +143,7 @@
         <div style="height: 1px; background: rgba(27,42,33,0.12); margin: 22px 0;"></div>
         <div id="trimIncludes" style="display: flex; flex-direction: column; gap: 10px;"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px;">
-          <a href="#faq" id="reserveBtn" class="btn-green" style="padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; flex: 1 1 160px; text-align: center;"></a>
+          <button type="button" id="reserveBtn" class="btn btn-green" data-open-contact style="padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; flex: 1 1 160px; text-align: center;"></button>
           <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(27,42,33,0.6); line-height: 1.5;"><span id="trimPrice"></span><br><span data-c="depositNote"></span></div>
         </div>
       </div>
@@ -206,9 +221,23 @@
         <div id="stickyName" style="font-size: 15px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
         <div id="stickyMeta" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(27,42,33,0.6);"></div>
       </div>
-      <a href="#build" class="btn-green" data-c="reserveLabel" style="padding: 12px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; flex: 0 0 auto;"></a>
+      <button type="button" class="btn btn-green" data-open-contact data-c="reserveLabel" style="padding: 12px 22px; border-radius: 999px; font-weight: 700; font-size: 14px; flex: 0 0 auto;"></button>
     </div>
   </div>
+
+  <dialog id="contactDialog" aria-labelledby="contactHeading">
+    <div class="body">
+      <h2 id="contactHeading" data-c="contact.heading" style="margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.02em;"></h2>
+      <p data-c="contact.blurb" style="margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: rgba(27,42,33,0.72);"></p>
+      <div style="margin: 20px 0 4px; padding: 12px 14px; border-radius: 12px; background: #e6efe6;">
+        <div data-c="contact.selectedLabel" class="mono-note"></div>
+        <div id="contactSelection" style="margin-top: 4px; font-size: 15px; font-weight: 600;"></div>
+      </div>
+      <div id="contactMethods" style="margin-top: 12px;"></div>
+      <button type="button" id="contactClose" class="btn btn-green" data-c="contact.closeLabel"
+              style="margin-top: 22px; width: 100%; padding: 13px; border-radius: 999px; font-weight: 700; font-size: 15px;"></button>
+    </div>
+  </dialog>
 </div>
 
 <script src="content.js"></script>
@@ -289,6 +318,15 @@ el('trimList').innerHTML = CONTENT.trims.map((t, i) => `
 el('cwList').innerHTML = CONTENT.colorways.map((c, i) =>
   `<button type="button" class="swatch" data-cw="${i}" aria-pressed="false" title="${esc(c.name)}" aria-label="${esc(c.name)}" style="background:${esc(c.hex)};"></button>`).join('');
 
+// A method with an empty href is plain text rather than a dead link.
+el('contactMethods').innerHTML = CONTENT.contact.methods.map(m => `
+  <div class="contact-row">
+    <span class="mono-note">${esc(m.label)}</span>
+    ${m.href
+      ? `<a href="${esc(m.href)}"${/^https?:/.test(m.href) ? ' target="_blank" rel="noopener"' : ''}>${esc(m.value)}</a>`
+      : `<span style="font-weight:600;">${esc(m.value)}</span>`}
+  </div>`).join('');
+
 // Clamped so a bad defaultTrim in content.js can't blank the panel.
 let trim = Math.min(Math.max(CONTENT.defaultTrim | 0, 0), CONTENT.trims.length - 1);
 let cw = 0;
@@ -302,6 +340,7 @@ function render() {
   el('cwName').textContent = c.name;
   el('stickyName').textContent = CONTENT.site.model + ' ' + t.name;
   el('stickyMeta').textContent = t.price + ' · ' + c.name;
+  el('contactSelection').textContent = CONTENT.site.model + ' ' + t.name + ' · ' + c.name + ' · ' + t.price;
   el('trimIncludes').innerHTML = t.includes.map(line => `
     <div style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;">
       <span style="width:6px;height:6px;border-radius:50%;background:#35604a;margin-top:7px;flex:0 0 auto;"></span>
@@ -316,6 +355,11 @@ document.addEventListener('click', e => {
   if (t) { trim = +t.dataset.trim; render(); }
   if (c) { cw = +c.dataset.cw; render(); }
   if (e.target.closest('#navMobile a')) closeNav();
+
+  const dialog = el('contactDialog');
+  if (e.target.closest('[data-open-contact]')) { closeNav(); dialog.showModal(); }
+  // A click landing on the dialog element itself is a click on the backdrop.
+  if (e.target === dialog || e.target.closest('#contactClose')) dialog.close();
 });
 
 function closeNav() {
