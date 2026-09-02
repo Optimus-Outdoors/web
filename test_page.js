@@ -58,6 +58,8 @@ function build(content, fetchImpl) {
 
   vm.runInContext(js, vm.createContext({
     document, CONTENT: content, console: console_, FormData, fetch: fetchImpl,
+    location: { search: '' },      // no ?debug panel during tests
+    addEventListener() {}, window: {},
   }));
 
   const click = (attr, i) => onClick({
