@@ -90,7 +90,7 @@ const CONTENT = {
       photoNote:'overland trim — exterior 3/4 view',
       includes: [
         'Galley with 2-burner + sink',
-        '30 gal fresh,
+        '30 gal fresh, 12 gal grey',
         '800Ah lithium, 600W solar',
         'Diesel air heater + hot water',
         'Convertible dinette for two',
@@ -170,7 +170,7 @@ const CONTENT = {
       ['Battery',                   '400 Ah LiFePO4 (12V)'],
       ['Solar',                     '600 W roof array, MPPT'],
       ['Heat',                      'Hydronic, 2 kW'],
-      ['Wall insulation',           'R-10 walls],
+      ['Wall insulation',           'R-10 walls'],
       ['Warranty',                  '3-year structural, 1-year systems'],
     ],
   },
