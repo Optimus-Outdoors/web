@@ -456,40 +456,6 @@ el('navToggle').addEventListener('click', () => {
 });
 
 render();
-
-// Temporary: load with ?debug to see live layout numbers on the device.
-// Delete this block once the mobile scroll issue is settled.
-if (/[?&]debug/.test(location.search)) {
-  const panel = document.createElement('pre');
-  panel.style.cssText = 'position:fixed;top:0;left:0;z-index:99;margin:0;background:#000;color:#0f0;' +
-    'font:11px/1.35 ui-monospace,monospace;padding:8px 10px;max-width:100%;white-space:pre;pointer-events:none;';
-  const update = () => {
-    const d = document.documentElement;
-    const footerEnd = document.querySelector('footer').getBoundingClientRect().bottom + scrollY;
-    let past = 'none';
-    document.querySelectorAll('*').forEach(el => {
-      if (getComputedStyle(el).position === 'fixed') return;
-      const b = el.getBoundingClientRect().bottom + scrollY;
-      if (b > footerEnd + 2) past = '+' + Math.round(b - footerEnd) + ' ' + el.tagName + (el.id ? '#' + el.id : '');
-    });
-    panel.textContent = [
-      'scrollH   ' + d.scrollHeight,
-      'clientH   ' + d.clientHeight,
-      'innerH    ' + innerHeight,
-      'visualVP  ' + (window.visualViewport ? Math.round(visualViewport.height) : '-'),
-      'footerEnd ' + Math.round(footerEnd),
-      'slack     ' + Math.round(d.scrollHeight - footerEnd),
-      'scrollY   ' + Math.round(scrollY),
-      'maxScroll ' + Math.round(d.scrollHeight - innerHeight),
-      'past      ' + past,
-    ].join('\n');
-  };
-  addEventListener('scroll', update, { passive: true });
-  addEventListener('resize', update);
-  if (window.visualViewport) visualViewport.addEventListener('resize', update);
-  document.body.appendChild(panel);
-  update();
-}
 </script>
 </body>
 </html>
