@@ -39,6 +39,18 @@
   .contact-row:last-child { border-bottom: 0; }
   .contact-row a { font-weight: 600; }
   .contact-row a:hover { text-decoration: underline; }
+  .field { display: block; margin-top: 12px; }
+  .field span { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em;
+                text-transform: uppercase; color: rgba(27,42,33,0.55); margin-bottom: 5px; }
+  .field input, .field textarea { width: 100%; font-family: inherit; font-size: 15px; color: #1b2a21;
+    padding: 11px 13px; border-radius: 10px; background: #fffdf7; border: 1.5px solid rgba(27,42,33,0.16); }
+  .field input:focus, .field textarea:focus { outline: 2px solid #35604a; outline-offset: -1px; border-color: #35604a; }
+  .field textarea { resize: vertical; min-height: 84px; }
+  #formStatus { margin-top: 12px; font-size: 14px; line-height: 1.5; }
+  #formStatus[data-state="error"] { color: #8a2b2b; }
+  #formStatus[data-state="success"] { color: #35604a; font-weight: 600; }
+  /* Formspree's honeypot: bots fill hidden fields, humans never see it. */
+  .gotcha { position: absolute; left: -9999px; }
 
   .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #35604a; }
   .mono-note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(27,42,33,0.55); }
@@ -234,8 +246,24 @@
         <div id="contactSelection" style="margin-top: 4px; font-size: 15px; font-weight: 600;"></div>
       </div>
       <div id="contactMethods" style="margin-top: 12px;"></div>
-      <button type="button" id="contactClose" class="btn btn-green" data-c="contact.closeLabel"
-              style="margin-top: 22px; width: 100%; padding: 13px; border-radius: 999px; font-weight: 700; font-size: 15px;"></button>
+
+      <!-- Hidden until contact.formEndpoint is filled in. -->
+      <form id="contactForm" hidden style="margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(27,42,33,0.12);">
+        <label class="field"><span data-c="contact.form.nameLabel"></span>
+          <input name="name" type="text" required autocomplete="name"></label>
+        <label class="field"><span data-c="contact.form.emailLabel"></span>
+          <input name="email" type="email" required autocomplete="email"></label>
+        <label class="field"><span data-c="contact.form.messageLabel"></span>
+          <textarea name="message" required></textarea></label>
+        <input class="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="selection" id="formSelection">
+        <button type="submit" id="formSubmit" class="btn btn-green" data-c="contact.form.submitLabel"
+                style="margin-top: 16px; width: 100%; padding: 13px; border-radius: 999px; font-weight: 700; font-size: 15px;"></button>
+        <div id="formStatus" role="status" aria-live="polite"></div>
+      </form>
+
+      <button type="button" id="contactClose" class="btn" data-c="contact.closeLabel"
+              style="margin-top: 14px; width: 100%; padding: 12px; border-radius: 999px; font-weight: 600; font-size: 15px; background: transparent; color: rgba(27,42,33,0.7); border: 1px solid rgba(27,42,33,0.2);"></button>
     </div>
   </dialog>
 </div>
@@ -327,6 +355,44 @@ el('contactMethods').innerHTML = CONTENT.contact.methods.map(m => `
       : `<span style="font-weight:600;">${esc(m.value)}</span>`}
   </div>`).join('');
 
+// The form stays hidden until an endpoint is configured, so an unconfigured
+// site shows the email/instagram rows rather than a form that goes nowhere.
+const FORM = CONTENT.contact.form;
+const endpoint = (CONTENT.contact.formEndpoint || '').trim();
+const contactForm = el('contactForm');
+if (endpoint) {
+  contactForm.hidden = false;
+  contactForm.action = endpoint;
+  contactForm.method = 'POST';
+  contactForm.querySelector('textarea').placeholder = FORM.messageHint || '';
+
+  contactForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const status = el('formStatus'), submit = el('formSubmit');
+    submit.disabled = true;
+    status.dataset.state = 'sending';
+    status.textContent = FORM.sendingLabel;
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' },
+      });
+      if (!res.ok) throw new Error(res.status);
+      contactForm.reset();
+      status.dataset.state = 'success';
+      status.textContent = FORM.successLabel;
+    } catch (err) {
+      // Network failure or a non-2xx from the form service.
+      console.error('contact form:', err);
+      status.dataset.state = 'error';
+      status.textContent = FORM.errorLabel;
+    } finally {
+      submit.disabled = false;
+    }
+  });
+}
+
 // Clamped so a bad defaultTrim in content.js can't blank the panel.
 let trim = Math.min(Math.max(CONTENT.defaultTrim | 0, 0), CONTENT.trims.length - 1);
 let cw = 0;
@@ -340,7 +406,9 @@ function render() {
   el('cwName').textContent = c.name;
   el('stickyName').textContent = CONTENT.site.model + ' ' + t.name;
   el('stickyMeta').textContent = t.price + ' · ' + c.name;
-  el('contactSelection').textContent = CONTENT.site.model + ' ' + t.name + ' · ' + c.name + ' · ' + t.price;
+  const selection = CONTENT.site.model + ' ' + t.name + ' · ' + c.name + ' · ' + t.price;
+  el('contactSelection').textContent = selection;
+  el('formSelection').value = selection;   // rides along with the enquiry
   el('trimIncludes').innerHTML = t.includes.map(line => `
     <div style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;">
       <span style="width:6px;height:6px;border-radius:50%;background:#35604a;margin-top:7px;flex:0 0 auto;"></span>

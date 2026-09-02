@@ -19,6 +19,21 @@ You do not need to open `index.html` to change wording.
 | `test_page.js` | Safety check — run `node test_page.js` before pushing. |
 | `scratch/` | Original Claude Design export. Ignored by git. |
 
+## Turning on the contact form
+
+The Reserve popup shows the email and Instagram rows out of the box. To add a
+real form that emails you, the site needs somewhere to send it — a static site
+has no server of its own:
+
+1. Sign up free at <https://formspree.io> (50 messages/month).
+2. Create a form; it gives you a URL like `https://formspree.io/f/abcdwxyz`.
+3. Paste it into `formEndpoint` in `content.js` and push.
+4. Send a test message — Formspree asks you to confirm your address on the
+   first one.
+
+Leave `formEndpoint` empty and the form stays hidden, so nothing looks broken
+before it is set up.
+
 ## Before you push
 
 ```

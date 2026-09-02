@@ -223,6 +223,31 @@ const CONTENT = {
       { label: 'Shop',      value: 'Bend, Oregon · Thu–Sun, 9–5', href: '' },
     ],
     closeLabel: 'Close',
+
+    // ---- Contact form ------------------------------------------------
+    // OFF until you paste an endpoint below. While it is empty the popup
+    // just shows the email/instagram rows above, so nothing looks broken.
+    //
+    // To turn it on (about 2 minutes, free for 50 messages/month):
+    //   1. Sign up at https://formspree.io with the email you want
+    //      enquiries delivered to.
+    //   2. Create a new form. It gives you a URL that looks like
+    //      https://formspree.io/f/abcdwxyz
+    //   3. Paste that whole URL between the quotes below and push.
+    //   4. Send yourself a test message — Formspree asks you to confirm
+    //      your email address on the very first one.
+    formEndpoint: '',
+
+    form: {
+      nameLabel:     'Name',
+      emailLabel:    'Email',
+      messageLabel:  'Message',
+      messageHint:   'Questions about the build, timeline, or financing.',
+      submitLabel:   'Send enquiry',
+      sendingLabel:  'Sending…',
+      successLabel:  'Thanks — we will reply within a day.',
+      errorLabel:    'That did not send. Please email us instead.',
+    },
   },
 
   // ---------------------------------------------------------------
